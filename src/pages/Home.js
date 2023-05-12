@@ -13,26 +13,18 @@ const Home = () => {
         dispatch(dataList())
     }, [dispatch])
 
-    const services_order1 = data.filter((data) => data.service_order % 2 === 0);
-    const services_order2 = data.filter((data) => data.service_order % 2 === 1);
 
+    const servicesData = data.sort((a, b) => {
+        return a.service_order - b.service_order;
+    });
 
-    // const [services_order1] = data && data?.filter(data => data.service_order === 1)
-    // const [services_order2] = data && data?.filter(data => data.service_order === 2)
-    // const [services_order3] = data && data?.filter(data => data.service_order === 3)
-    // const [services_order4] = data && data?.filter(data => data.service_order === 4)
-    // const [services_order5] = data && data?.filter(data => data.service_order === 5)
-    // const [services_order6] = data && data?.filter(data => data.service_order === 6)
-    // const [services_order7] = data && data?.filter(data => data.service_order === 7)
-
-    // console.log(services_order1)
 
     return (
         <div className='container'>
             <Header title={data} />
             <div>
                 {
-                    data.map((data) => {
+                    servicesData.map((data) => {
                         if (data.service_order % 2 === 1) {
                             return <div key={data.id} className={`services_order ${data.service_order}`}>
                                 <div className='services_order_img'>
