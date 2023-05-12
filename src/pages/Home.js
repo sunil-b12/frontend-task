@@ -32,36 +32,35 @@ const Home = () => {
             <Header title={data} />
             <div>
                 {
-                    services_order2.map((data) => {
-                        return <div key={data.id} className={`services_order ${data.service_order}`}>
-                            <div className='services_order_img'>
-                                <img src={data.icon} alt="" />
+                    data.map((data) => {
+                        if (data.service_order % 2 === 1) {
+                            return <div key={data.id} className={`services_order ${data.service_order}`}>
+                                <div className='services_order_img'>
+                                    <img src={data.icon} alt="" />
+                                </div>
+                                <div className='services_order_info'>
+                                    <img src={data.photo} alt="" />
+                                    <h1>{data.title}</h1>
+                                    <p>{data.description1.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+                                    <p>{data.description2.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+                                </div>
                             </div>
+                        } else {
+                            return <div key={data.id} className={`services_order ${data.service_order}`}>
                             <div className='services_order_info'>
                                 <img src={data.photo} alt="" />
                                 <h1>{data.title}</h1>
                                 <p>{data.description1.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                                 <p>{data.description2.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                             </div>
-                        </div>
-                    })
-                }
-
-                {
-                    services_order1.map((data) => {
-                        return <div key={data.id} className={`services_order ${data.service_order}`}>
-                             <div className='services_order_info'>
-                                <img src={data.photo} alt="" />
-                                <h1>{data.title}</h1>
-                                <p>{data.description1.replace(/<\/?[^>]+(>|$)/g, "")}</p>
-                                <p>{data.description2.replace(/<\/?[^>]+(>|$)/g, "")}</p>
-                            </div>
                             <div className='services_order_img'>
                                 <img src={data.icon} alt="" />
                             </div>
                         </div>
+                        }
                     })
                 }
+
             </div>
         </div>
     )
